@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NOIR — Artisan Brownies · Spain </title>
+<title>NOIR — Artisan Brownies · Mallorca</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
@@ -43,12 +43,16 @@
 
   /* hero */
   .hero{background:var(--ink);color:var(--cream);border-radius:0 0 28px 28px;overflow:hidden}
-  .hero-in{padding:84px 0 76px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:26px}
-  .hero-eyebrow{font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--choc);opacity:0;animation:fade .8s ease .1s forwards}
-  .hero-h1{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(44px,9vw,100px);line-height:.94;letter-spacing:-.03em;color:var(--cream);opacity:0;transform:translateY(18px);animation:rise .8s cubic-bezier(.2,.7,.2,1) .2s forwards}
+  .hero-in{padding:72px 0;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  .hero-text{text-align:left}
+  .hero-eyebrow{font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--choc);margin-bottom:18px;opacity:0;animation:fade .8s ease .1s forwards}
+  .hero-h1{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(40px,6.5vw,84px);line-height:.94;letter-spacing:-.03em;color:var(--cream);opacity:0;transform:translateY(18px);animation:rise .8s cubic-bezier(.2,.7,.2,1) .2s forwards}
   .hero-h1 .blk{display:inline-block;width:.14em;height:.14em;background:var(--choc);border-radius:22%;margin-left:.06em;vertical-align:baseline;box-shadow:inset 0 .04em 0 rgba(255,255,255,.3)}
+  .hero-photo{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:20px;opacity:0;transform:scale(.96);animation:pop .9s cubic-bezier(.2,.7,.2,1) .35s forwards}
+  @keyframes pop{to{opacity:1;transform:none}}
   .lede{max-width:520px;font-size:clamp(16px,2.4vw,19px);line-height:1.5;color:rgba(243,236,225,.82);opacity:0;animation:fade .8s ease .45s forwards}
-  .hero-cta{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;opacity:0;animation:fade .8s ease .6s forwards}
+  .hero-cta{display:flex;gap:16px;flex-wrap:wrap;justify-content:flex-start;opacity:0;animation:fade .8s ease .6s forwards}
+  .hero-text .lede{margin:22px 0 28px}
   .btn-cream{background:var(--cream);color:var(--ink)}
   .btn-cream:hover{background:#fff}
   .btn-ghost{background:transparent;color:var(--cream);border:1px solid rgba(243,236,225,.35)}
@@ -100,13 +104,18 @@
   .foot-bottom{margin-top:34px;font-size:12px;opacity:.5;letter-spacing:.04em}
 
   @media(max-width:780px){
+    .hero-in{grid-template-columns:1fr;gap:34px;text-align:center;padding:56px 0}
+    .hero-text{text-align:center}
+    .hero-cta{justify-content:center}
+    .hero-text .lede{margin-left:auto;margin-right:auto}
+    .hero-photo{max-width:340px;margin:0 auto;order:-1}
     .cards,.cards.two{grid-template-columns:1fr;max-width:400px;margin:0 auto}
     .story-in{grid-template-columns:1fr;padding:48px 28px}
     .nav-links a:not(.order){display:none}
   }
   @media(prefers-reduced-motion:reduce){
     *{animation:none!important;scroll-behavior:auto}
-    .hero-h1,.hero-eyebrow,.lede,.hero-cta{opacity:1;transform:none}
+    .hero-h1,.hero-eyebrow,.lede,.hero-cta,.hero-photo{opacity:1;transform:none}
   }
 </style>
 </head>
@@ -122,13 +131,16 @@
   </div></nav>
 
   <header class="hero"><div class="wrap hero-in">
-    <p class="hero-eyebrow">NOIR · Mallorca</p>
-    <h1 class="hero-h1">Dark, dense,<br>baked to order<i class="blk"></i></h1>
-    <p class="lede">Small-batch brownies, finished by hand and shipped the same morning they're made.</p>
-    <div class="hero-cta">
-      <a href="order.html" class="btn btn-cream">Build your box</a>
-      <a href="#flavors" class="btn btn-ghost">See the menu</a>
+    <div class="hero-text">
+      <p class="hero-eyebrow">NOIR · Mallorca</p>
+      <h1 class="hero-h1">Dark, dense,<br>baked to order<i class="blk"></i></h1>
+      <p class="lede">Small-batch brownies, finished by hand and shipped the same morning they're made.</p>
+      <div class="hero-cta">
+        <a href="order.html" class="btn btn-cream">Build your box</a>
+        <a href="#flavors" class="btn btn-ghost">See the menu</a>
+      </div>
     </div>
+    <img class="hero-photo" src="brownie.jpg" alt="A stack of three dark, fudgy NOIR brownies topped with chocolate and sea salt">
   </div></header>
 
   <div class="marq"><div class="marq-track">
