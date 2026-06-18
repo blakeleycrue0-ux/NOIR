@@ -14,23 +14,16 @@
   body{background:var(--cream);color:var(--ink);font-family:'Nunito',sans-serif;-webkit-font-smoothing:antialiased;padding:12px}
   a{color:inherit;text-decoration:none}
   .page{max-width:1200px;margin:0 auto}
-  .fred{font-family:'Fredoka',sans-serif}
-
-  /* wordmark */
   .word{font-family:'Fredoka',sans-serif;font-weight:700;line-height:.9;letter-spacing:-.02em;display:inline-flex;align-items:flex-end}
   .word .blk{display:inline-block;background:var(--choc);border-radius:24%;width:.22em;height:.22em;margin-left:.08em}
-
-  /* pills */
-  .pill{display:inline-block;font-family:'Fredoka',sans-serif;font-weight:600;font-size:16px;padding:15px 30px;border-radius:100px;cursor:pointer;transition:transform .18s,background .2s;border:none}
+  .pill{display:inline-block;font-family:'Fredoka',sans-serif;font-weight:600;font-size:16px;padding:14px 28px;border-radius:100px;cursor:pointer;transition:transform .18s,background .2s;border:none}
   .pill:hover{transform:translateY(-2px)}
   .pill:focus-visible{outline:3px solid var(--choc);outline-offset:3px}
   .pill-cream{background:var(--cream);color:var(--ink)}
   .pill-ink{background:var(--ink);color:var(--cream)}
-  .pill-choc{background:var(--choc);color:var(--cream)}
   .pill-ghost{background:transparent;color:var(--cream);border:2px solid rgba(243,236,225,.4)}
   .pill-ghost:hover{background:rgba(243,236,225,.1)}
 
-  /* nav */
   nav{position:sticky;top:12px;z-index:30;background:var(--paper);border-radius:100px;padding:0 12px 0 22px;box-shadow:0 6px 24px rgba(16,12,10,.08);margin-bottom:14px}
   .nav-in{display:flex;align-items:center;justify-content:space-between;height:60px}
   nav .word{font-size:26px}
@@ -38,167 +31,138 @@
   .nav-links a{opacity:.75;transition:opacity .2s}
   .nav-links a:hover{opacity:1}
   .nav-links .pill{font-size:15px;padding:11px 22px}
-  .nav-links .pill:hover{opacity:1}
 
-  /* blocks */
   .block{border-radius:34px;margin-bottom:14px;overflow:hidden}
   .b-choc{background:var(--choc);color:var(--cream)}
   .b-cocoa{background:var(--cocoa);color:var(--cream)}
   .b-ink{background:var(--ink);color:var(--cream)}
   .b-cream{background:var(--paper);color:var(--ink)}
 
-  /* hero */
-  .hero-in{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center;padding:66px 56px}
-  .kicker{font-family:'Fredoka',sans-serif;font-weight:600;font-size:15px;letter-spacing:.02em;background:rgba(243,236,225,.16);display:inline-block;padding:7px 16px;border-radius:100px;margin-bottom:22px}
-  .hero-h1{font-family:'Fredoka',sans-serif;font-weight:700;font-size:clamp(54px,10vw,128px);line-height:.86;letter-spacing:-.03em}
+  .hero-in{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center;padding:56px}
+  .kicker{font-family:'Fredoka',sans-serif;font-weight:600;font-size:15px;background:rgba(243,236,225,.16);display:inline-block;padding:7px 16px;border-radius:100px;margin-bottom:20px}
+  .hero-h1{font-family:'Fredoka',sans-serif;font-weight:700;font-size:clamp(52px,9vw,116px);line-height:.86;letter-spacing:-.03em}
   .hero-h1 .blk{display:inline-block;width:.13em;height:.13em;background:var(--cream);border-radius:24%;margin-left:.04em;vertical-align:baseline}
-  .hero-sub{font-size:18px;line-height:1.5;max-width:380px;margin:22px 0 30px;color:rgba(243,236,225,.85)}
+  .hero-sub{font-size:18px;line-height:1.5;max-width:380px;margin:20px 0 28px;color:rgba(243,236,225,.85)}
   .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
-  .hero-photo{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:26px;transform:rotate(-3deg);box-shadow:0 24px 60px rgba(16,12,10,.4);opacity:0;animation:pop .9s cubic-bezier(.2,.7,.2,1) .25s forwards}
-  @keyframes pop{to{opacity:1;transform:rotate(-3deg) scale(1)}}
-  @keyframes popmob{to{opacity:1;transform:none}}
+  .hero-photo{width:100%;border-radius:22px;transform:rotate(-2.5deg);box-shadow:0 24px 60px rgba(16,12,10,.4);display:block}
 
-  /* flavors */
-  .flav{padding:60px 56px}
-  .flav h2{font-family:'Fredoka',sans-serif;font-weight:700;font-size:clamp(38px,6vw,68px);line-height:.95;letter-spacing:-.02em;margin-bottom:8px}
-  .flav .lead{font-size:17px;color:var(--cocoa);margin-bottom:40px}
-  .tiles{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-  .tile{border-radius:26px;padding:38px 34px;display:flex;flex-direction:column;min-height:260px;transition:transform .22s}
-  .tile:hover{transform:translateY(-6px)}
-  .tile .tt{font-family:'Fredoka',sans-serif;font-weight:700;font-size:30px;display:flex;justify-content:space-between;align-items:baseline;gap:10px}
-  .tile .pr{font-size:18px;opacity:.85;white-space:nowrap}
-  .tile .td{margin-top:12px;font-size:16px;line-height:1.5;flex:1}
-  .tile.dark{background:var(--ink);color:var(--cream)}
-  .tile.cocoa{background:var(--cocoa);color:var(--cream)}
-  .tile.dark .td,.tile.cocoa .td{color:rgba(243,236,225,.78)}
-  .tile .pill{align-self:flex-start;margin-top:26px}
+  .flav{padding:58px 56px}
+  .flav h2{font-family:'Fredoka',sans-serif;font-weight:700;font-size:clamp(38px,6vw,64px);line-height:.95;letter-spacing:-.02em}
+  .flav .lead{font-size:17px;color:var(--cocoa);margin:8px 0 38px}
+  .products{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .pcard{background:var(--cream);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;transition:transform .22s,box-shadow .22s}
+  .pcard:hover{transform:translateY(-6px);box-shadow:0 18px 44px rgba(16,12,10,.14)}
+  .pcard img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
+  .pcard .body{padding:20px 22px 24px;display:flex;flex-direction:column;flex:1}
+  .pcard .nm{font-family:'Fredoka',sans-serif;font-weight:700;font-size:21px;display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+  .pcard .pr{font-size:17px;color:var(--cocoa);white-space:nowrap}
+  .pcard .pill{align-self:flex-start;margin-top:16px}
 
-  /* story */
-  .story-in{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;padding:60px 56px}
-  .story h2{font-family:'Fredoka',sans-serif;font-weight:700;font-size:clamp(34px,5vw,56px);line-height:.98;letter-spacing:-.02em}
-  .story p{font-size:17px;line-height:1.6;color:rgba(243,236,225,.82);margin-top:18px}
-  .stats{display:flex;gap:34px;margin-top:30px}
-  .stats b{font-family:'Fredoka',sans-serif;font-weight:700;font-size:40px;display:block;line-height:1}
-  .stats small{font-size:13px;letter-spacing:.06em;text-transform:uppercase;opacity:.7}
-  .story-photo{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:24px;transform:rotate(2.5deg);box-shadow:0 20px 50px rgba(16,12,10,.35)}
+  .story-in{padding:62px 56px;max-width:760px}
+  .story-in .kicker{background:rgba(243,236,225,.16)}
+  .story-in h2{font-family:'Fredoka',sans-serif;font-weight:700;font-size:clamp(32px,5vw,52px);line-height:1;letter-spacing:-.02em;margin-bottom:22px}
+  .story-in p{font-size:16.5px;line-height:1.65;color:rgba(243,236,225,.85);margin-bottom:16px}
+  .story-in b{color:var(--cream)}
 
-  /* big cta */
   .cta{padding:80px 40px;text-align:center}
   .cta h2{font-family:'Fredoka',sans-serif;font-weight:700;font-size:clamp(44px,9vw,104px);line-height:.9;letter-spacing:-.03em;margin-bottom:26px}
   .cta .blk{display:inline-block;width:.12em;height:.12em;background:var(--choc);border-radius:24%;margin-left:.04em;vertical-align:baseline}
 
-  /* footer */
   footer{padding:46px 56px}
   .foot-in{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px}
   footer .word{font-size:30px;color:var(--cream)}
   .foot-links{display:flex;gap:22px;font-weight:700;font-size:15px;opacity:.75}
   .foot-bottom{margin-top:30px;font-size:13px;opacity:.5}
 
-  @media(max-width:860px){
-    .hero-in,.story-in{grid-template-columns:1fr;padding:46px 30px;text-align:center}
-    .hero-cta{justify-content:center}
-    .hero-sub{margin-left:auto;margin-right:auto}
-    .hero-photo{max-width:330px;margin:0 auto;order:-1;transform:none;animation-name:popmob}
-    @keyframes pop{to{opacity:1;transform:none}}
-    .story-photo{max-width:360px;margin:0 auto;transform:none}
-    .stats{justify-content:center}
-    .tiles{grid-template-columns:1fr}
-    .flav{padding:46px 30px}
+  @media(max-width:880px){
+    .hero-in{grid-template-columns:1fr;padding:42px 28px;text-align:center}
+    .hero-cta{justify-content:center}.hero-sub{margin-left:auto;margin-right:auto}
+    .hero-photo{max-width:380px;margin:0 auto;order:-1;transform:none}
+    .products{grid-template-columns:1fr 1fr}
+    .flav,.story-in{padding:44px 26px}
     .nav-links a:not(.cta-link){display:none}
-    footer{padding:38px 30px}
   }
-  @media(prefers-reduced-motion:reduce){
-    *{animation:none!important;scroll-behavior:auto}
-    .hero-photo{opacity:1}
-  }
+  @media(max-width:540px){.products{grid-template-columns:1fr}}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto}.hero-photo{transform:none}}
 </style>
 </head>
 <body>
 <div class="page">
 
-  <nav>
-    <div class="nav-in">
-      <a href="index.html" class="word" aria-label="NOIR home">NOIR<i class="blk"></i></a>
-      <div class="nav-links">
-        <a href="#flavors">Brownies</a>
-        <a href="#story">Our story</a>
-        <a href="order.html" class="pill pill-ink cta-link">Order</a>
-      </div>
+  <nav><div class="nav-in">
+    <a href="index.html" class="word" aria-label="NOIR home">NOIR<i class="blk"></i></a>
+    <div class="nav-links">
+      <a href="#shop">Brownies</a>
+      <a href="#story">Our story</a>
+      <a href="#shop" class="pill pill-ink cta-link">Shop</a>
     </div>
-  </nav>
+  </div></nav>
 
   <!-- HERO -->
-  <section class="block b-choc">
-    <div class="hero-in">
-      <div>
-        <span class="kicker">Small-batch · Mallorca</span>
-        <h1 class="hero-h1">The dark<br>stuff<i class="blk"></i></h1>
-        <p class="hero-sub">Dense, fudgy brownies baked to order and shipped the same morning. No shelf time, no shortcuts.</p>
-        <div class="hero-cta">
-          <a href="order.html" class="pill pill-cream">Build your box</a>
-          <a href="#flavors" class="pill pill-ghost">See the menu</a>
-        </div>
+  <section class="block b-choc"><div class="hero-in">
+    <div>
+      <span class="kicker">Small batch · Mallorca</span>
+      <h1 class="hero-h1">The dark<br>stuff<i class="blk"></i></h1>
+      <p class="hero-sub">Dense, fudgy brownies baked to order and shipped the same morning. Five ways to go dark.</p>
+      <div class="hero-cta">
+        <a href="#shop" class="pill pill-cream">Shop brownies</a>
+        <a href="#story" class="pill pill-ghost">How we bake</a>
       </div>
-      <img class="hero-photo" src="brownie.jpg" alt="A stack of dark, fudgy NOIR brownies topped with chocolate and sea salt">
     </div>
-  </section>
+    <img class="hero-photo" src="prod-brownie.png" alt="A rich, fudgy NOIR brownie with a crackled top">
+  </div></section>
 
-  <!-- FLAVORS -->
-  <section id="flavors" class="block b-cream">
-    <div class="flav">
-      <h2>Pick your poison.</h2>
-      <p class="lead">Two ways in. Both very, very dark.</p>
-      <div class="tiles">
-        <div class="tile dark">
-          <div class="tt">Normal <span class="pr">€3.50</span></div>
-          <div class="td">Our 72% dark, fudgy centre and crackled top. Baked fresh — nothing to decide.</div>
-          <a href="order.html" class="pill pill-cream">Order →</a>
-        </div>
-        <div class="tile cocoa">
-          <div class="tt">Custom <span class="pr">from €4.50</span></div>
-          <div class="td">Pick your base, stack on toppings, and we build and bake it to your spec.</div>
-          <a href="order.html" class="pill pill-cream">Build it →</a>
-        </div>
-      </div>
+  <!-- SHOP -->
+  <section id="shop" class="block b-cream"><div class="flav">
+    <h2>Pick your poison.</h2>
+    <p class="lead">Every brownie, baked fresh to order.</p>
+    <div class="products">
+      <a class="pcard" href="product.html?p=brownie">
+        <img src="prod-brownie.png" alt="Classic NOIR brownie">
+        <div class="body"><div class="nm">Brownie <span class="pr">€3.50</span></div><span class="pill pill-ink">Order →</span></div>
+      </a>
+      <a class="pcard" href="product.html?p=strawberry">
+        <img src="prod-strawberry.png" alt="Strawberry brownie">
+        <div class="body"><div class="nm">Strawberry <span class="pr">€4.50</span></div><span class="pill pill-ink">Order →</span></div>
+      </a>
+      <a class="pcard" href="product.html?p=oreo">
+        <img src="prod-oreo.png" alt="Oreo brownie">
+        <div class="body"><div class="nm">Oreo <span class="pr">€4.50</span></div><span class="pill pill-ink">Order →</span></div>
+      </a>
+      <a class="pcard" href="product.html?p=kinder">
+        <img src="prod-kinder.png" alt="Kinder Bueno brownie">
+        <div class="body"><div class="nm">Kinder Bueno <span class="pr">€4.50</span></div><span class="pill pill-ink">Order →</span></div>
+      </a>
+      <a class="pcard" href="product.html?p=lotus">
+        <img src="prod-lotus.png" alt="Lotus Biscoff brownie">
+        <div class="body"><div class="nm">Lotus <span class="pr">€4.50</span></div><span class="pill pill-ink">Order →</span></div>
+      </a>
     </div>
-  </section>
+  </div></section>
 
-  <!-- STORY -->
-  <section id="story" class="block b-cocoa">
-    <div class="story-in">
-      <div class="story">
-        <h2>Made fresh,<br>never shelved.</h2>
-        <p>NOIR started in one home kitchen in Mallorca. We bake to order, so every box leaves warm and ships the same day — no warehouses, no preservatives, just the dark stuff.</p>
-        <div class="stats">
-          <div><b>72%</b><small>Dark choc</small></div>
-          <div><b>0</b><small>Days shelved</small></div>
-          <div><b>100%</b><small>To order</small></div>
-        </div>
-      </div>
-      <img class="story-photo" src="brownie.jpg" alt="Close-up of a fudgy NOIR brownie">
-    </div>
-  </section>
+  <!-- STORY / HYGIENE -->
+  <section id="story" class="block b-cocoa"><div class="story-in">
+    <span class="kicker">How we bake</span>
+    <h2>Baked fresh, made by hand.</h2>
+    <p>Every brownie is made to order in small batches from our kitchen in Mallorca. We don't mass-produce, we don't freeze, and we never let a brownie sit on a shelf — when your order comes in, that's when we start baking.</p>
+    <p><b>Only the good stuff.</b> Real butter, fresh eggs and 72% dark chocolate. No palm oil, no artificial flavours, no shortcuts — just dense, fudgy, seriously chocolatey brownies.</p>
+    <p><b>A clean kitchen, every bake.</b> Our workspace is cleaned and sanitised before and after every batch, ingredients are stored properly and checked for freshness, and everything is handled with real care. Got an allergy question? Ask before you order.</p>
+    <p><b>Straight to your door.</b> Cooled, boxed in protective packaging and sent the same day, so it arrives fresh and intact.</p>
+  </div></section>
 
   <!-- CTA -->
-  <section class="block b-ink">
-    <div class="cta">
-      <h2>Hungry yet<i class="blk"></i></h2>
-      <a href="order.html" class="pill pill-cream">Build your box</a>
-    </div>
-  </section>
+  <section class="block b-ink"><div class="cta">
+    <h2>Hungry yet<i class="blk"></i></h2>
+    <a href="#shop" class="pill pill-cream">Shop brownies</a>
+  </div></section>
 
-  <!-- FOOTER -->
-  <footer class="block b-ink">
+  <footer class="block b-ink"><div>
     <div class="foot-in">
       <a href="index.html" class="word">NOIR<i class="blk"></i></a>
-      <div class="foot-links">
-        <a href="#flavors">Brownies</a>
-        <a href="#story">Story</a>
-        <a href="order.html">Order</a>
-      </div>
+      <div class="foot-links"><a href="#shop">Brownies</a><a href="#story">Story</a></div>
     </div>
     <div class="foot-bottom">NOIR · Artisan brownies · Mallorca, Spain · Baked to order</div>
-  </footer>
+  </div></footer>
 
 </div>
 </body>
