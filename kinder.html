@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kinder Bueno Brownie — NOIR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#100C0A;--cream:#F3ECE1;--paper:#FBF8F2;--choc:#7E5435;--cocoa:#5A3A28}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--cream);color:var(--ink);font-family:'Nunito',sans-serif;-webkit-font-smoothing:antialiased;padding:12px}
+  a{color:inherit;text-decoration:none}
+  .page{max-width:1200px;margin:0 auto}
+  .word{font-family:'Fredoka',sans-serif;font-weight:700;line-height:.9;letter-spacing:-.02em;display:inline-flex;align-items:flex-end}
+  .word .blk{display:inline-block;background:var(--choc);border-radius:24%;width:.22em;height:.22em;margin-left:.08em}
+  .pill{display:inline-block;font-family:'Fredoka',sans-serif;font-weight:600;font-size:16px;padding:14px 28px;border-radius:100px;cursor:pointer;transition:transform .18s,background .2s;border:none}
+  .pill:hover{transform:translateY(-2px)}
+  .pill:focus-visible{outline:3px solid var(--choc);outline-offset:3px}
+  .pill-ink{background:var(--ink);color:var(--cream)}
+  .pill-ink:hover{background:var(--cocoa)}
+  .pill:disabled{opacity:.5;cursor:not-allowed;transform:none}
+
+  nav{position:sticky;top:12px;z-index:30;background:var(--paper);border-radius:100px;padding:0 12px 0 22px;box-shadow:0 6px 24px rgba(16,12,10,.08);margin-bottom:14px}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:60px}
+  nav .word{font-size:26px}
+  .nav-links .pill{font-size:15px;padding:11px 22px}
+
+  .block{border-radius:34px;background:var(--paper);overflow:hidden;margin-bottom:14px}
+  .prod{display:grid;grid-template-columns:1fr 1fr;gap:0}
+  .prod-img{width:100%;height:100%;min-height:360px;object-fit:cover;display:block}
+  .prod-info{padding:48px 46px;display:flex;flex-direction:column}
+  .back{font-weight:700;font-size:14px;color:var(--choc);margin-bottom:20px;display:inline-block}
+  .back:hover{text-decoration:underline}
+  .prod-info h1{font-family:'Fredoka',sans-serif;font-weight:700;font-size:clamp(34px,5vw,52px);line-height:.98;letter-spacing:-.02em}
+  .price{font-family:'Fredoka',sans-serif;font-weight:700;font-size:26px;color:var(--cocoa);margin:10px 0 20px}
+  .desc{font-size:16.5px;line-height:1.65;color:rgba(16,12,10,.72);margin-bottom:16px}
+  .qtyrow{display:flex;align-items:center;gap:16px;margin-top:26px;flex-wrap:wrap}
+  .stepper{display:flex;align-items:center;border:3px solid var(--ink);border-radius:100px;overflow:hidden}
+  .stepper button{width:44px;height:44px;background:none;border:none;font-size:22px;cursor:pointer;font-family:'Fredoka';color:var(--ink)}
+  .stepper button:hover{background:rgba(16,12,10,.06)}
+  .stepper span{min-width:36px;text-align:center;font-family:'Fredoka';font-weight:600}
+  #buy{flex:1;min-width:200px}
+  .note{font-size:13px;color:rgba(16,12,10,.5);margin-top:18px}
+
+  .info{padding:44px 46px}
+  .info h2{font-family:'Fredoka',sans-serif;font-weight:700;font-size:26px;margin-bottom:14px}
+  .info p{font-size:15.5px;line-height:1.6;color:rgba(16,12,10,.72)}
+  .allergen{margin-top:18px;background:var(--cream);border-left:4px solid var(--choc);border-radius:10px;padding:16px 18px}
+  .allergen b{font-family:'Fredoka';display:block;margin-bottom:4px}
+
+  .reviews{padding:44px 46px}
+  .rev-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:24px}
+  .rev-head h2{font-family:'Fredoka',sans-serif;font-weight:700;font-size:26px}
+  .stars{color:var(--choc);font-size:18px;letter-spacing:2px}
+  .rev-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .rev-card{background:var(--cream);border-radius:18px;padding:22px 24px}
+  .rev-card .s{color:var(--choc);font-size:14px;letter-spacing:2px}
+  .rev-card .t{font-size:15px;line-height:1.55;margin:8px 0 12px}
+  .rev-card .n{font-family:'Fredoka';font-weight:600;font-size:14px}
+  .rev-empty{background:var(--cream);border-radius:18px;padding:30px;text-align:center;color:rgba(16,12,10,.6);font-size:15px;line-height:1.6}
+
+  footer{background:var(--ink);color:var(--cream);border-radius:34px;padding:40px 46px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+  footer .word{font-size:26px;color:var(--cream)}
+  .foot-bottom{font-size:13px;opacity:.5}
+
+  @media(max-width:780px){
+    .prod{grid-template-columns:1fr}.prod-img{min-height:0;aspect-ratio:1/1}
+    .prod-info,.info,.reviews{padding:32px 24px}
+    .rev-grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <nav><div class="nav-in">
+    <a href="index.html" class="word" aria-label="NOIR home">NOIR<i class="blk"></i></a>
+    <div class="nav-links"><a href="index.html#shop" class="pill pill-ink">Shop</a></div>
+  </div></nav>
+
+  <section class="block"><div class="prod">
+    <img class="prod-img" src="prod-kinder.png" alt="Kinder Bueno Brownie">
+    <div class="prod-info">
+      <a class="back" href="index.html#shop">&larr; All brownies</a>
+      <h1>Kinder Bueno Brownie</h1>
+      <div class="price">&euro;4.50</div>
+      <p class="desc">For the milk-chocolate lovers. Our deep, dark brownie topped with chunks of Kinder Bueno and a smooth milk-chocolate drizzle — the creamy, hazelnut-kissed sweetness playing off the bitter cocoa base.</p>
+      <p class="desc">Rich, soft and very moreish. Each one is finished by hand so the topping lands generously every time.</p>
+      <div class="qtyrow">
+        <div class="stepper">
+          <button onclick="bump(-1)" aria-label="Decrease quantity">&minus;</button>
+          <span id="qty">1</span>
+          <button onclick="bump(1)" aria-label="Increase quantity">+</button>
+        </div>
+        <button id="buy" class="pill pill-ink" onclick="checkout()">Order now</button>
+      </div>
+      <p class="note">Baked to order in Mallorca &middot; shipped fresh the same day</p>
+    </div>
+  </div></section>
+
+  <section class="block"><div class="info">
+    <h2>Ingredients &amp; allergens</h2>
+    <p>Dark chocolate (72%), butter, free-range eggs, golden caster sugar, wheat flour, cocoa powder, vanilla extract, sea salt, Kinder Bueno (milk chocolate, hazelnuts, wheat flour, sugar, soya, skimmed milk powder).</p>
+    <div class="allergen">
+      <b>Contains</b>
+      Gluten (wheat), egg, milk, soya, hazelnuts (nuts). Made in a kitchen that also handles other nuts.
+    </div>
+  </div></section>
+
+  <section class="block"><div class="reviews">
+    <div class="rev-head">
+      <h2>Reviews</h2>
+      <span class="stars" id="revStars"></span>
+    </div>
+    <div id="revWrap"></div>
+  </div></section>
+
+  <footer>
+    <a href="index.html" class="word">NOIR<i class="blk"></i></a>
+    <div class="foot-bottom">NOIR &middot; Artisan brownies &middot; Mallorca</div>
+  </footer>
+</div>
+
+<script>
+const PRODUCT = { name: "Kinder Bueno Brownie", unit: 4.50, desc: "Kinder Bueno Brownie" };
+let qty = 1;
+function render(){
+  document.getElementById('qty').textContent = qty;
+  document.getElementById('buy').textContent = 'Order now \u00b7 \u20ac' + (PRODUCT.unit*qty).toFixed(2);
+}
+function bump(n){ qty = Math.max(1, qty+n); render(); }
+async function checkout(){
+  const btn = document.getElementById('buy');
+  btn.disabled = true; btn.textContent = 'Loading\u2026';
+  try{
+    const res = await fetch('/.netlify/functions/create-checkout',{
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ items: [{ nm: PRODUCT.name, dt: PRODUCT.desc, unit: PRODUCT.unit, qty }] })
+    });
+    if(!res.ok) throw new Error('no endpoint');
+    const data = await res.json();
+    window.location.href = data.url;
+  }catch(e){
+    btn.disabled = false; render();
+    alert("Checkout isn't connected yet \u2014 add the Stripe Netlify function and this goes live.");
+  }
+}
+render();
+
+/* ---------------------------------------------------------------
+   REAL REVIEWS GO HERE. Add each one as an object, e.g.:
+   { stars:5, text:"Best brownie I've had.", name:"Marta, Palma" }
+   Leave the list empty until you have genuine reviews.
+--------------------------------------------------------------- */
+const REVIEWS = [];
+
+function renderReviews(){
+  const wrap = document.getElementById('revWrap');
+  const starsEl = document.getElementById('revStars');
+  if(!REVIEWS.length){
+    starsEl.textContent = '';
+    wrap.innerHTML = '<div class="rev-empty">No reviews yet \u2014 be the first to try it and tell us what you think.</div>';
+    return;
+  }
+  const avg = (REVIEWS.reduce((a,r)=>a+r.stars,0)/REVIEWS.length);
+  starsEl.textContent = '\u2605'.repeat(Math.round(avg)) + '  ' + avg.toFixed(1) + ' (' + REVIEWS.length + ')';
+  wrap.innerHTML = '<div class="rev-grid">' + REVIEWS.map(r =>
+    '<div class="rev-card"><div class="s">' + '\u2605'.repeat(r.stars) + '</div>' +
+    '<div class="t">' + r.text + '</div><div class="n">' + r.name + '</div></div>'
+  ).join('') + '</div>';
+}
+renderReviews();
+</script>
+</body>
+</html>
