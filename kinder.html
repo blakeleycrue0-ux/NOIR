@@ -20,7 +20,6 @@
   .pill:focus-visible{outline:3px solid var(--choc);outline-offset:3px}
   .pill-ink{background:var(--ink);color:var(--cream)}
   .pill-ink:hover{background:var(--cocoa)}
-  .pill:disabled{opacity:.5;cursor:not-allowed;transform:none}
 
   nav{position:sticky;top:12px;z-index:30;background:var(--paper);border-radius:100px;padding:0 12px 0 22px;box-shadow:0 6px 24px rgba(16,12,10,.08);margin-bottom:14px}
   .nav-in{display:flex;align-items:center;justify-content:space-between;height:60px}
@@ -41,7 +40,7 @@
   .stepper button{width:44px;height:44px;background:none;border:none;font-size:22px;cursor:pointer;font-family:'Fredoka';color:var(--ink)}
   .stepper button:hover{background:rgba(16,12,10,.06)}
   .stepper span{min-width:36px;text-align:center;font-family:'Fredoka';font-weight:600}
-  #buy{flex:1;min-width:200px}
+  #buy{flex:1;min-width:220px}
   .note{font-size:13px;color:rgba(16,12,10,.5);margin-top:18px}
 
   .info{padding:44px 46px}
@@ -93,7 +92,7 @@
           <span id="qty">1</span>
           <button onclick="bump(1)" aria-label="Increase quantity">+</button>
         </div>
-        <button id="buy" class="pill pill-ink" onclick="checkout()">Order now</button>
+        <button id="buy" class="pill pill-ink" onclick="addCart()">Add to basket</button>
       </div>
       <p class="note">Baked to order in Mallorca &middot; shipped fresh the same day</p>
     </div>
@@ -102,17 +101,11 @@
   <section class="block"><div class="info">
     <h2>Ingredients &amp; allergens</h2>
     <p>Dark chocolate (72%), butter, free-range eggs, golden caster sugar, wheat flour, cocoa powder, vanilla extract, sea salt, Kinder Bueno (milk chocolate, hazelnuts, wheat flour, sugar, soya, skimmed milk powder).</p>
-    <div class="allergen">
-      <b>Contains</b>
-      Gluten (wheat), egg, milk, soya, hazelnuts (nuts). Made in a kitchen that also handles other nuts.
-    </div>
+    <div class="allergen"><b>Contains</b>Gluten (wheat), egg, milk, soya, hazelnuts (nuts). Made in a kitchen that also handles other nuts.</div>
   </div></section>
 
   <section class="block"><div class="reviews">
-    <div class="rev-head">
-      <h2>Reviews</h2>
-      <span class="stars" id="revStars"></span>
-    </div>
+    <div class="rev-head"><h2>Reviews</h2><span class="stars" id="revStars"></span></div>
     <div id="revWrap"></div>
   </div></section>
 
@@ -122,53 +115,26 @@
   </footer>
 </div>
 
+<script src="cart.js"></script>
 <script>
-const PRODUCT = { name: "Kinder Bueno Brownie", unit: 4.50, desc: "Kinder Bueno Brownie" };
+const PRODUCT = { id:"kinder", name:"Kinder Bueno Brownie", unit:4.50 };
 let qty = 1;
 function render(){
   document.getElementById('qty').textContent = qty;
-  document.getElementById('buy').textContent = 'Order now \u00b7 \u20ac' + (PRODUCT.unit*qty).toFixed(2);
+  document.getElementById('buy').textContent = 'Add to basket \u00b7 \u20ac' + (PRODUCT.unit*qty).toFixed(2);
 }
 function bump(n){ qty = Math.max(1, qty+n); render(); }
-async function checkout(){
-  const btn = document.getElementById('buy');
-  btn.disabled = true; btn.textContent = 'Loading\u2026';
-  try{
-    const res = await fetch('/.netlify/functions/create-checkout',{
-      method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ items: [{ nm: PRODUCT.name, dt: PRODUCT.desc, unit: PRODUCT.unit, qty }] })
-    });
-    if(!res.ok) throw new Error('no endpoint');
-    const data = await res.json();
-    window.location.href = data.url;
-  }catch(e){
-    btn.disabled = false; render();
-    alert("Checkout isn't connected yet \u2014 add the Stripe Netlify function and this goes live.");
-  }
-}
+function addCart(){ NOIRCart.add({ id:PRODUCT.id, name:PRODUCT.name, unit:PRODUCT.unit, qty }); qty=1; render(); }
 render();
 
-/* ---------------------------------------------------------------
-   REAL REVIEWS GO HERE. Add each one as an object, e.g.:
-   { stars:5, text:"Best brownie I've had.", name:"Marta, Palma" }
-   Leave the list empty until you have genuine reviews.
---------------------------------------------------------------- */
+/* REAL REVIEWS GO HERE, e.g. { stars:5, text:"Amazing!", name:"Marta, Palma" } */
 const REVIEWS = [];
-
 function renderReviews(){
-  const wrap = document.getElementById('revWrap');
-  const starsEl = document.getElementById('revStars');
-  if(!REVIEWS.length){
-    starsEl.textContent = '';
-    wrap.innerHTML = '<div class="rev-empty">No reviews yet \u2014 be the first to try it and tell us what you think.</div>';
-    return;
-  }
-  const avg = (REVIEWS.reduce((a,r)=>a+r.stars,0)/REVIEWS.length);
-  starsEl.textContent = '\u2605'.repeat(Math.round(avg)) + '  ' + avg.toFixed(1) + ' (' + REVIEWS.length + ')';
-  wrap.innerHTML = '<div class="rev-grid">' + REVIEWS.map(r =>
-    '<div class="rev-card"><div class="s">' + '\u2605'.repeat(r.stars) + '</div>' +
-    '<div class="t">' + r.text + '</div><div class="n">' + r.name + '</div></div>'
-  ).join('') + '</div>';
+  const wrap=document.getElementById('revWrap'), starsEl=document.getElementById('revStars');
+  if(!REVIEWS.length){ starsEl.textContent=''; wrap.innerHTML='<div class="rev-empty">No reviews yet \u2014 be the first to try it and tell us what you think.</div>'; return; }
+  const avg=REVIEWS.reduce((a,r)=>a+r.stars,0)/REVIEWS.length;
+  starsEl.textContent='\u2605'.repeat(Math.round(avg))+'  '+avg.toFixed(1)+' ('+REVIEWS.length+')';
+  wrap.innerHTML='<div class="rev-grid">'+REVIEWS.map(r=>'<div class="rev-card"><div class="s">'+'\u2605'.repeat(r.stars)+'</div><div class="t">'+r.text+'</div><div class="n">'+r.name+'</div></div>').join('')+'</div>';
 }
 renderReviews();
 </script>
